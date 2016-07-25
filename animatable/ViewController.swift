@@ -10,8 +10,7 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController{
-    var isSuccess : Bool = false
-    
+   
     @IBOutlet weak var registerComplete: UIActivityIndicatorView!
     @IBOutlet weak var userField: AnimatableTextField!
     @IBOutlet weak var passField: AnimatableTextField!
