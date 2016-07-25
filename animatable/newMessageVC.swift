@@ -33,7 +33,8 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 user.age = dict["age"] as? Int
                 user.dob = dict["dob"] as? String
                 user.mobile = dict["mobile"] as? Int
-                print(user.name,user.email)
+                user.profileImageUrl = dict["profileImageUrl"] as? String
+                
                 self.users.append(user)
                 
                 dispatch_async(dispatch_get_main_queue(), { 
@@ -46,19 +47,21 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 //            print(snapshot)
         
             }, withCancelBlock: nil)
+    
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        if let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? contactListTVC {
         let user = users[indexPath.row]
-        cell?.textLabel?.text = user.name
-        cell?.detailTextLabel?.text = "Age is \(user.age!) and email is \(user.email!)"
-        
-
-        return cell!
+        cell.ConfigureCell(user)
+            
+            return cell
+        } else {
+         return UITableViewCell()
+        }
         
     }
    

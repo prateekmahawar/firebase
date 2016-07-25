@@ -10,10 +10,13 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    var imagePicker: UIImagePickerController!
+
     @IBOutlet weak var registerComplete: UIActivityIndicatorView!
    
+    @IBOutlet weak var imgView: AnimatableImageView!
     
     @IBOutlet weak var nameField: AnimatableTextField!
     @IBOutlet weak var emailField: AnimatableTextField!
@@ -24,8 +27,21 @@ class RegisterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerComplete.hidden = true
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
 
     }
+    //Image Upload
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        imgView.image = image
+    }
+    
+    @IBAction func addPicBtnPressed(sender: AnyObject) {
+        presentViewController(imagePicker, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func submitBtnPreseed(sender: AnyObject) {
         registerComplete.hidden = false
         registerComplete.startAnimating()
@@ -47,42 +63,66 @@ class RegisterVC: UIViewController {
                 if error != nil {
                     print(error)
                 } else {
-                    let ref = FIRDatabase.database().referenceFromURL("https://animatable-f00d2.firebaseio.com/")
-                    let usersReference = ref.child("Users").child((uid))
-                    let values = ["name":name, "email":email,"dob":dob,"mobile":mobile,"age":dobprop.age]
-                    usersReference.updateChildValues(values as [NSObject : AnyObject], withCompletionBlock: {
-                        (err,ref) in
-                        if err != nil {
-                            print(err)
-                            return
-                        }
-                        self.registerComplete.stopAnimating()
-                        print("Saved to Database")
-                        self.registerComplete.hidden = true
-                        self.goToProfile()
-                    })
-                }
-            })
-            
-        } else {
-            let alert = UIAlertController(title: "Incomplete Form", message: "Please fill the complete form and you must be 18 years old to access this app and passowrd should be more than 6 characters", preferredStyle: .Alert)
-            let OkAction = UIAlertAction(title: "OK", style: .Default) {
-                action -> () in
-                
+                    
+                    let imageName = NSUUID().UUIDString
+                    let storageRef = FIRStorage.storage().reference().child("Profile_Image").child("\(imageName).png")
+                    if let uploadData = UIImagePNGRepresentation(self.imgView.image!) {
+                        storageRef.putData(uploadData, metadata: nil, completion: { (metaData, Error) in
+                            if error != nil {
+                                print(error)
+                                return
+                            }
+                            print(metaData)
+                            if let profileImageUrl = metaData?.downloadURL()?.absoluteString {
+                               let values = ["name":name, "email":email,"dob":dob,"mobile":mobile,"age":dobprop.age, "profileImageUrl":profileImageUrl]
+                                self.registerUserIntoDataBase(uid, values: values as! [String : AnyObject])
+                            }
+                        })
+                    }
+
+        
+        
+                }})}}
+    
+    func registerUserIntoDataBase(uid: String, values: [String: AnyObject]) {
+       
+        
+        let ref = FIRDatabase.database().referenceFromURL("https://animatable-f00d2.firebaseio.com/")
+        let usersReference = ref.child("Users").child((uid))
+        usersReference.updateChildValues(values as [NSObject : AnyObject], withCompletionBlock: {
+            (err,ref) in
+            if err != nil {
+                print(err)
+                return
             }
-            alert.addAction(OkAction)
-             self.presentViewController(alert, animated: true, completion: nil)
-        }
+            self.registerComplete.stopAnimating()
+            print("Saved to Database")
+            self.registerComplete.hidden = true
+            self.goToProfile()
+        })
         
         
+//            
+//     else {
+//            registerComplete.stopAnimating()
+//            registerComplete.hidden = true
+//            let alert = UIAlertController(title: "Incomplete Form", message: "Please fill the complete form and you must be 18 years old to access this app and passowrd should be more than 6 characters", preferredStyle: .Alert)
+//            let OkAction = UIAlertAction(title: "OK", style: .Default) {
+//                action -> () in
+//                
+//            }
+//            alert.addAction(OkAction)
+//            self.presentViewController(alert, animated: true, completion: nil)
+//        }
     }
+    
     func goToProfile() {
         
         self.performSegueWithIdentifier("profileVC", sender: nil)
     }
    
-    @IBAction func backBtnPressed(sender: AnyObject) {
-        
+    @IBAction func backBtnPressed(sender: UIButton) {
+        sender.setTitle("", forState: .Normal)
         dismissViewControllerAnimated(true, completion: nil)
     }
     
