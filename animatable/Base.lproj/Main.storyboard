@@ -126,9 +126,18 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="FyL-YK-8lH">
                                 <rect key="frame" x="112" y="154" width="150" height="116"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="zIh-OO-M1P">
+                                <rect key="frame" x="167" y="314" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Ffi-f9-cfe"/>
+                                    <constraint firstAttribute="width" constant="40" id="kjX-dE-Ry7"/>
+                                </constraints>
+                                <color key="color" red="0.70980392160000005" green="0.4549019608" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zIh-OO-M1P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="08e-dc-hxo"/>
                             <constraint firstItem="cys-g0-gcA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="1c5-TZ-xC4"/>
                             <constraint firstItem="XDQ-sU-wsd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5uM-v1-rRv"/>
                             <constraint firstItem="cys-g0-gcA" firstAttribute="top" secondItem="FyL-YK-8lH" secondAttribute="bottom" constant="90" id="SZo-2s-fAb"/>
@@ -143,6 +152,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cys-g0-gcA" secondAttribute="bottom" constant="100" id="oX6-RN-AaP"/>
                             <constraint firstItem="Jl6-RQ-x6x" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="v8i-TF-SWH"/>
                             <constraint firstItem="Jl6-RQ-x6x" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="y6C-E7-L9G"/>
+                            <constraint firstItem="zIh-OO-M1P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zR5-zK-a1v"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -154,6 +164,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="passField" destination="dRh-7Y-WBA" id="lh3-02-IS7"/>
+                        <outlet property="registerComplete" destination="zIh-OO-M1P" id="7mX-GC-39S"/>
                         <outlet property="userField" destination="GTb-4p-leg" id="qrl-6d-si3"/>
                         <segue destination="f0T-Ib-L53" kind="show" identifier="profileVC" customClass="PresentNatGeoSegue" customModule="animatable" customModuleProvider="target" id="sUM-M5-SAS"/>
                     </connections>

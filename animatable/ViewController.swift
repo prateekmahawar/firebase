@@ -12,6 +12,7 @@ import Firebase
 class ViewController: UIViewController{
     var isSuccess : Bool = false
     
+    @IBOutlet weak var registerComplete: UIActivityIndicatorView!
     @IBOutlet weak var userField: AnimatableTextField!
     @IBOutlet weak var passField: AnimatableTextField!
    
@@ -26,10 +27,14 @@ class ViewController: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerComplete.hidden = true
     }
     
     @IBAction func signInPressed(sender: AnyObject) {
+        registerComplete.hidden = false
+        registerComplete.startAnimating()
+        view.userInteractionEnabled = false
+        
         guard let email = userField.text , pass = passField.text else { return }
         
         FIRAuth.auth()?.signInWithEmail(email, password: pass, completion: { (user, error) in
@@ -51,6 +56,7 @@ class ViewController: UIViewController{
     override func viewDidDisappear(animated: Bool) {
         userField.text = nil
         passField.text = nil
+        registerComplete.hidden = true
     }
     
 }
