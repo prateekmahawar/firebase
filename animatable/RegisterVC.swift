@@ -12,6 +12,9 @@ import FirebaseAuth
 
 class RegisterVC: UIViewController {
     
+    @IBOutlet weak var registerComplete: UIActivityIndicatorView!
+   
+    
     @IBOutlet weak var nameField: AnimatableTextField!
     @IBOutlet weak var emailField: AnimatableTextField!
     @IBOutlet weak var dobField: AnimatableTextField!
@@ -20,9 +23,14 @@ class RegisterVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerComplete.hidden = true
 
     }
     @IBAction func submitBtnPreseed(sender: AnyObject) {
+        registerComplete.hidden = false
+        registerComplete.startAnimating()
+        view.userInteractionEnabled = false
+        
         guard let name = nameField.text , password = passField.text , dob = dobField.text , mobile = mobileField.text , email = emailField.text else {
         return }
     
@@ -30,7 +38,7 @@ class RegisterVC: UIViewController {
         formatter.dateFormat = "dd-MM-yyyy"
         guard let dobprop = formatter.dateFromString(dob) else { return }
         
-        if isValidEmail(email) && dobprop.age > 18 && name.characters.count > 0 && password.characters.count > 0 && mobile.characters.count > 0
+        if isValidEmail(email) && dobprop.age > 18 && name.characters.count > 0 && password.characters.count > 5 && mobile.characters.count > 0
         {
             FIRAuth.auth()?.createUserWithEmail(email, password: password, completion: { (user:FIRUser?, error) in
                 guard let uid = user?.uid else {
@@ -48,13 +56,16 @@ class RegisterVC: UIViewController {
                             print(err)
                             return
                         }
+                        self.registerComplete.stopAnimating()
                         print("Saved to Database")
+                        self.registerComplete.hidden = true
+                        self.goToProfile()
                     })
                 }
             })
             
         } else {
-            let alert = UIAlertController(title: "Incomplete Form", message: "Please fill the complete form and you must be 18 years old to acess this app", preferredStyle: .Alert)
+            let alert = UIAlertController(title: "Incomplete Form", message: "Please fill the complete form and you must be 18 years old to access this app and passowrd should be more than 6 characters", preferredStyle: .Alert)
             let OkAction = UIAlertAction(title: "OK", style: .Default) {
                 action -> () in
                 
@@ -64,6 +75,10 @@ class RegisterVC: UIViewController {
         }
         
         
+    }
+    func goToProfile() {
+        
+        self.performSegueWithIdentifier("profileVC", sender: nil)
     }
    
     @IBAction func backBtnPressed(sender: AnyObject) {

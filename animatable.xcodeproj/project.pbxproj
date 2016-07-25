@@ -117,6 +117,7 @@
 		C70660EF1D4361530016546D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70660871D4361530016546D /* UIColorExtension.swift */; };
 		C70660F01D4361530016546D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70660881D4361530016546D /* UIViewControllerExtension.swift */; };
 		C70660F11D4361530016546D /* ViewControllerDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C70660891D4361530016546D /* ViewControllerDesignable.swift */; };
+		C73373E61D466A75009AEF3F /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73373E51D466A75009AEF3F /* ProfileVC.swift */; };
 		C76A7E1C1D43B4FD00F5641D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */; };
 		C79D341C1D43780800F64B38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C79D341B1D43780800F64B38 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -236,6 +237,7 @@
 		C70660871D4361530016546D /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		C70660881D4361530016546D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		C70660891D4361530016546D /* ViewControllerDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerDesignable.swift; sourceTree = "<group>"; };
+		C73373E51D466A75009AEF3F /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		C79D341B1D43780800F64B38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -442,6 +444,7 @@
 			children = (
 				C70660111D4361430016546D /* ViewController.swift */,
 				C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */,
+				C73373E51D466A75009AEF3F /* ProfileVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				C70660A91D4361530016546D /* CornerDesignable.swift in Sources */,
 				C70660A81D4361530016546D /* ContainerTransition.swift in Sources */,
 				C70660F01D4361530016546D /* UIViewControllerExtension.swift in Sources */,
+				C73373E61D466A75009AEF3F /* ProfileVC.swift in Sources */,
 				C70660B51D4361530016546D /* InteractiveAnimator.swift in Sources */,
 				C70660E61D4361530016546D /* TintDesignable.swift in Sources */,
 				C706609D1D4361530016546D /* AnimatorFactory.swift in Sources */,

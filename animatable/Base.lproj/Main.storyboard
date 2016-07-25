@@ -94,6 +94,9 @@
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="signInPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oQB-2x-BK5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -110,7 +113,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7bY-Xj-hdq" kind="show" customClass="PresentFadeSegue" customModule="animatable" customModuleProvider="target" id="vBs-RX-Pnp"/>
+                                    <segue destination="7bY-Xj-hdq" kind="show" customClass="PresentFadeSegue" customModule="animatable" customModuleProvider="target" id="7Cd-3x-wDL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW9-XH-QXl">
@@ -149,10 +152,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="qbL-Eg-AOn"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="passField" destination="dRh-7Y-WBA" id="lh3-02-IS7"/>
+                        <outlet property="userField" destination="GTb-4p-leg" id="qrl-6d-si3"/>
+                        <segue destination="f0T-Ib-L53" kind="show" identifier="profileVC" customClass="PresentNatGeoSegue" customModule="animatable" customModuleProvider="target" id="sUM-M5-SAS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1136.5" y="349.5"/>
+            <point key="canvasLocation" x="949.5" y="349.5"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="l5b-hW-6sW">
@@ -294,7 +302,7 @@
                                             <outlet property="delegate" destination="7bY-Xj-hdq" id="EY1-RG-5zo"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password(min. 6 charactes)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9e-Le-kVJ" customClass="AnimatableTextField" customModule="animatable" customModuleProvider="target">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password(min. 6 characters)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L9e-Le-kVJ" customClass="AnimatableTextField" customModule="animatable" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="116" width="343" height="58"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES"/>
@@ -418,9 +426,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Olh-ae-GVL">
+                                <rect key="frame" x="177" y="324" width="20" height="20"/>
+                                <color key="color" red="0.70980392160000005" green="0.4549019608" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Olh-ae-GVL" firstAttribute="centerY" secondItem="2hr-5W-2Ak" secondAttribute="centerY" id="3HN-bi-cH9"/>
+                            <constraint firstItem="Olh-ae-GVL" firstAttribute="centerY" secondItem="2hr-5W-2Ak" secondAttribute="centerY" id="490-K3-tpz"/>
                             <constraint firstItem="vOl-ri-kx8" firstAttribute="top" secondItem="qxj-tc-K2v" secondAttribute="bottom" id="AKs-nR-xJM"/>
                             <constraint firstItem="TuT-zi-tCn" firstAttribute="centerX" secondItem="2hr-5W-2Ak" secondAttribute="centerX" id="Abe-sD-Bm6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOl-ri-kx8" secondAttribute="trailing" id="Cif-HZ-uxr"/>
@@ -429,12 +443,14 @@
                             <constraint firstItem="vOl-ri-kx8" firstAttribute="centerX" secondItem="2hr-5W-2Ak" secondAttribute="centerX" id="gX6-tQ-vMW"/>
                             <constraint firstAttribute="trailing" secondItem="qxj-tc-K2v" secondAttribute="trailing" id="hja-5P-KCL"/>
                             <constraint firstItem="qxj-tc-K2v" firstAttribute="leading" secondItem="2hr-5W-2Ak" secondAttribute="leading" id="ooZ-Od-rHx"/>
+                            <constraint firstItem="Olh-ae-GVL" firstAttribute="centerX" secondItem="2hr-5W-2Ak" secondAttribute="centerX" id="p0l-hR-VOG"/>
                             <constraint firstItem="qxj-tc-K2v" firstAttribute="top" secondItem="2hr-5W-2Ak" secondAttribute="top" id="pJg-3J-NP9"/>
                             <constraint firstItem="TuT-zi-tCn" firstAttribute="top" secondItem="vOl-ri-kx8" secondAttribute="bottom" constant="82" id="ycx-t8-39q"/>
                             <constraint firstItem="kaD-XO-Mhr" firstAttribute="top" secondItem="TuT-zi-tCn" secondAttribute="bottom" constant="45" id="z29-Vn-9MQ"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="490-K3-tpz"/>
                                 <exclude reference="ycx-t8-39q"/>
                                 <exclude reference="z29-Vn-9MQ"/>
                             </mask>
@@ -447,11 +463,87 @@
                         <outlet property="mobileField" destination="0G3-CO-eCH" id="BPV-Dr-KiR"/>
                         <outlet property="nameField" destination="cIb-uT-rKs" id="WCs-X4-vap"/>
                         <outlet property="passField" destination="L9e-Le-kVJ" id="d5c-Ei-vFg"/>
+                        <outlet property="registerComplete" destination="Olh-ae-GVL" id="f8b-HC-atu"/>
+                        <segue destination="f0T-Ib-L53" kind="show" identifier="profileVC" customClass="PresentNatGeoSegue" customModule="animatable" customModuleProvider="target" id="bkQ-Lo-3Cg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxo-DB-Nwt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1672.5" y="349.5"/>
+        </scene>
+        <!--ProfileVC-->
+        <scene sceneID="TfT-y8-Mrs">
+            <objects>
+                <viewController id="f0T-Ib-L53" customClass="ProfileVC" customModule="animatable" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="51i-d7-6mN"/>
+                        <viewControllerLayoutGuide type="bottom" id="aqb-p1-G4n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="65F-iV-Gnb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX7-4V-ie6" customClass="AnimatableView" customModule="animatable" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp7-Qm-DlQ">
+                                        <rect key="frame" x="18" y="8" width="51" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="CIo-yz-8oe"/>
+                                        </constraints>
+                                        <state key="normal" title="LogOut">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutPressed:" destination="f0T-Ib-L53" eventType="touchUpInside" id="AGt-VV-amX"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" customClass="PresentExplodeSegue" customModule="animatable" customModuleProvider="target" id="Vs7-Ze-TPY"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.70980392160000005" green="0.4549019608" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Yp7-Qm-DlQ" firstAttribute="leading" secondItem="EX7-4V-ie6" secondAttribute="leading" constant="18" id="MjZ-Dv-Hrc"/>
+                                    <constraint firstAttribute="height" constant="62" id="PTC-Ki-q4C"/>
+                                    <constraint firstItem="Yp7-Qm-DlQ" firstAttribute="top" secondItem="EX7-4V-ie6" secondAttribute="top" constant="8" id="V1e-cy-q6B"/>
+                                    <constraint firstAttribute="bottom" secondItem="Yp7-Qm-DlQ" secondAttribute="bottom" constant="8" id="lbw-Uf-K0K"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EX7-4V-ie6" firstAttribute="leading" secondItem="65F-iV-Gnb" secondAttribute="leading" id="BV3-1Y-57s"/>
+                            <constraint firstAttribute="trailing" secondItem="EX7-4V-ie6" secondAttribute="trailing" id="iIs-QH-nSK"/>
+                            <constraint firstItem="EX7-4V-ie6" firstAttribute="top" secondItem="65F-iV-Gnb" secondAttribute="top" id="mPw-bj-kan"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r6Y-ip-khk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1386.5" y="1207.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="qlM-7n-Wv1">
+            <objects>
+                <viewController id="JKc-nQ-p18" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cOy-ku-01d"/>
+                        <viewControllerLayoutGuide type="bottom" id="cqg-nK-00X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eHP-Oq-MQD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" systemItem="history" id="eBy-nG-xOf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y0m-xT-Ycw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2320.5" y="1867.5"/>
         </scene>
     </scenes>
     <resources>
@@ -466,4 +558,7 @@
         <image name="phone_touch" width="16" height="16"/>
         <image name="username" width="20" height="19"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bkQ-Lo-3Cg"/>
+    </inferredMetricsTieBreakers>
 </document>
