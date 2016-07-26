@@ -123,6 +123,8 @@
 		C76A7E1C1D43B4FD00F5641D /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */; };
 		C79D341C1D43780800F64B38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C79D341B1D43780800F64B38 /* GoogleService-Info.plist */; };
 		C7F044831D46BC71008FC897 /* contactListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F044821D46BC71008FC897 /* contactListTVC.swift */; };
+		C7F044851D47DF55008FC897 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F044841D47DF55008FC897 /* ChatVC.swift */; };
+		C7F044871D480530008FC897 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F044861D480530008FC897 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,6 +248,8 @@
 		C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		C79D341B1D43780800F64B38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C7F044821D46BC71008FC897 /* contactListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contactListTVC.swift; sourceTree = "<group>"; };
+		C7F044841D47DF55008FC897 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		C7F044861D480530008FC897 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +438,7 @@
 			isa = PBXGroup;
 			children = (
 				C73373ED1D46AA6C009AEF3F /* User.swift */,
+				C7F044861D480530008FC897 /* Message.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -454,6 +459,7 @@
 				C76A7E1B1D43B4FD00F5641D /* RegisterVC.swift */,
 				C73373E51D466A75009AEF3F /* ProfileVC.swift */,
 				C73373E71D469DF3009AEF3F /* newMessageVC.swift */,
+				C7F044841D47DF55008FC897 /* ChatVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -584,6 +590,7 @@
 			files = (
 				C70660991D4361530016546D /* AnimatableView.swift in Sources */,
 				C70660E21D4361530016546D /* SystemRotateAnimator.swift in Sources */,
+				C7F044871D480530008FC897 /* Message.swift in Sources */,
 				C70660BA1D4361530016546D /* NatGeoAnimator.swift in Sources */,
 				C70660B31D4361530016546D /* GradientStartPoint.swift in Sources */,
 				C70660BD1D4361530016546D /* PaddingDesignable.swift in Sources */,
@@ -646,6 +653,7 @@
 				C70660EE1D4361530016546D /* Typealias.swift in Sources */,
 				C70660AA1D4361530016546D /* DesignableNavigationBar.swift in Sources */,
 				C706609E1D4361530016546D /* BarButtonItemDesignable.swift in Sources */,
+				C7F044851D47DF55008FC897 /* ChatVC.swift in Sources */,
 				C70660C41D4361530016546D /* PresenterManager.swift in Sources */,
 				C70660C81D4361530016546D /* PresentFlipSegue.swift in Sources */,
 				C70660B41D4361530016546D /* GradientType.swift in Sources */,

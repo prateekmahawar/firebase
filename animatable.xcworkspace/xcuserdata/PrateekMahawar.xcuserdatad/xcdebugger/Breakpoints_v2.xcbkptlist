@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "animatable/RegisterVC.swift"
-            timestampString = "491174798.513773"
+            timestampString = "491248490.373097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "registerUserIntoDataBase(_:values:)"
             landmarkType = "5">
          </BreakpointContent>

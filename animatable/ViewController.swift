@@ -19,6 +19,8 @@ class ViewController: UIViewController{
         if FIRAuth.auth()?.currentUser?.uid != nil {
             print("User already logged in")
             self.moveToProfile()
+        } else {
+           
         }
         
         
@@ -39,6 +41,9 @@ class ViewController: UIViewController{
         FIRAuth.auth()?.signInWithEmail(email, password: pass, completion: { (user, error) in
             if error != nil {
                 print(error)
+                self.registerComplete.hidden = true
+                self.registerComplete.stopAnimating()
+                self.view.userInteractionEnabled = true
             } else {
                 
                 print("First Login Complete")

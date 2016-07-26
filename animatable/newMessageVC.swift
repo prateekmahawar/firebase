@@ -25,6 +25,9 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     func fetchUser() {
         FIRDatabase.database().reference().child("Users").observeEventType(.ChildAdded, withBlock: { (snapshot) in
+            
+                        print("User Founds")
+                        print(snapshot)
             if let dict = snapshot.value as? [String:AnyObject] {
                 let user = User()
 //                user.setValuesForKeysWithDictionary(dict)
@@ -34,6 +37,7 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 user.dob = dict["dob"] as? String
                 user.mobile = dict["mobile"] as? Int
                 user.profileImageUrl = dict["profileImageUrl"] as? String
+                user.id = snapshot.key
                 
                 self.users.append(user)
                 
@@ -42,9 +46,6 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 })
             }
             
-            
-//            print("User Founds")
-//            print(snapshot)
         
             }, withCancelBlock: nil)
     
@@ -63,6 +64,23 @@ class newMessageVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
          return UITableViewCell()
         }
         
+    }
+    var profileVC : ProfileVC?
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        let user = users[indexPath.row]
+    performSegueWithIdentifier("sendMessage", sender: user)
+    
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "sendMessage" {
+            if let vc = segue.destinationViewController as? ChatVC {
+                
+                vc.receiverName = (sender as? User)!
+            }
+        }
     }
    
     @IBAction func cancelBtnPressed(sender: AnyObject) {

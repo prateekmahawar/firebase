@@ -65,8 +65,10 @@ class RegisterVC: UIViewController,UIImagePickerControllerDelegate,UINavigationC
                 } else {
                     
                     let imageName = NSUUID().UUIDString
-                    let storageRef = FIRStorage.storage().reference().child("Profile_Image").child("\(imageName).png")
-                    if let uploadData = UIImagePNGRepresentation(self.imgView.image!) {
+                    let storageRef = FIRStorage.storage().reference().child("Profile_Image").child("\(imageName).jpg")
+                    
+                    if let profileImage = self.imgView.image , uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                    
                         storageRef.putData(uploadData, metadata: nil, completion: { (metaData, Error) in
                             if error != nil {
                                 print(error)

@@ -13,7 +13,7 @@ class contactListTVC: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgView.layer.cornerRadius = 10
+        imgView.layer.cornerRadius = imgView.frame.size.height / 2
         imgView.layer.masksToBounds = true
     }
 
